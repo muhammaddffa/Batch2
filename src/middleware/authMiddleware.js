@@ -1,6 +1,6 @@
 const jwt = require ('jsonwebtoken');
 
-module .exports = {
+module.exports = {
     checklogin : (req, res, next) =>{
         const bearer = req.header('access-token');
         if(bearer === false){

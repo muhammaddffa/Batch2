@@ -63,7 +63,8 @@ module.exports = {
         const payload = {
             id : findUser.dataValues.id,
             username: findUser.dataValues.username,
-            email: findUser.dataValues.email
+            email: findUser.dataValues.email,
+            role: findUser.dataValues.role
         };
         const token = jwt.sign(payload,"TEST2345",{
             expiresIn: 86400

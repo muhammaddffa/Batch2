@@ -9,3 +9,6 @@ app.use('/', mainRoutes)
 app.listen(port,() => {
     console.log(`Server run on port:${port}`);
 })
+
+//npm init -y
+//npm i (dependensi yang dibutuhkan)

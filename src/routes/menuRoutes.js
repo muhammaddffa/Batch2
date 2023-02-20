@@ -8,8 +8,8 @@ const { searchBytitle } = require('../controllers/menuControllers');
 
 menuRoutes.post ('/', uploaddMiddleware,
  cloudinaryMiddleware,
-menuControllers.postDataMenu, searchBytitle);
-menuRoutes.get('/', menuControllers.getAllData);
+menuControllers.postDataMenu );
+menuRoutes.get('/', menuControllers.getAllData, searchBytitle);
 menuRoutes.delete('/:id', menuControllers.deleteData);
 menuRoutes.put('/:id', menuControllers.updateData);
 menuRoutes.get('/:id', menuControllers.getByid);

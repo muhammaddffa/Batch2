@@ -1,6 +1,7 @@
 // panggi model menu 
 const { where } = require('sequelize');
-const { menu } = require('../models')
+const { menu, kategori } = require('../models')
+
 
 module.exports = {
 
@@ -32,7 +33,13 @@ module.exports = {
     },
 
     getAllData: (req, res) => {
-        menu.findAll()
+        menu.findAll({
+            include: ({
+                model:kategori,
+                as: "kategoris",
+                attributes: ['nama_kategori']
+            })
+        })
         .then((data) => {
             res.status(200).send({
                 msg: 'success get All data',
@@ -122,7 +129,7 @@ module.exports = {
             res.status(500).send({
                 msg: 'failed search data',
                 status: 500,
-                erros
+                error
             })
         }) 
 
