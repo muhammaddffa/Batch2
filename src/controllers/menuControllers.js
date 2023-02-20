@@ -1,6 +1,7 @@
 // panggi model menu 
 const { where } = require('sequelize');
-const { menu, kategori } = require('../models')
+const { menu, kategori, Sequelize } = require('../models')
+const Op = Sequelize.Op
 
 
 module.exports = {
@@ -115,9 +116,8 @@ module.exports = {
         })
     },
     searchBytitle: (req, res) => {
-        const {nama} = req.params;
-
-        menu.findOne(nama)
+        const {nama} = req.query;
+        menu.findAll({where: {nama: {[Op.like]: '%'+nama+'%'}}})
         .then((data) => {
             res.status(200).send({
                 msg: 'success search data',
